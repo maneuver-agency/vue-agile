@@ -71,7 +71,7 @@
 				class="agile__dots"
 			>
 				<li
-					v-for="n in countSlides"
+					v-for="n in countDots"
 					:key="n"
 					class="agile__dot"
 					:class="{'agile__dot--current': n - 1 === currentSlide}"
@@ -155,6 +155,10 @@
 
 			countSlides: function () {
 				return (this.isSSR) ? this.htmlCollectionToArray(this.$slots.default).length : this.slides.length
+			},
+
+			countDots: function () {
+				return Math.ceil(this.countSlides / this.settings.slidesToScroll)
 			},
 
 			countSlidesAll: function () {
